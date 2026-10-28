@@ -22,15 +22,12 @@ function initMotto(quotes: string[]) {
     return;
   }
 
-  const pickRandom = () => Math.floor(Math.random() * quotes.length);
-  let idx = pickRandom();
+  let idx = 0;
   el.textContent = quotes[idx] || '';
   if (quotes.length <= 1) return;
 
   setInterval(() => {
-    let next = pickRandom();
-    while (quotes.length > 1 && next === idx) next = pickRandom();
-    idx = next;
+    idx = (idx + 1) % quotes.length;
 
     // Start exit transition
     el.classList.add('motto-exit');
