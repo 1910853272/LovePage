@@ -1,0 +1,40 @@
+---
+import { resolveMotto, type Config } from '../config';
+
+interface Props {
+  config: Config;
+}
+
+const { config } = Astro.props;
+const motto = resolveMotto(config);
+---
+
+<section class="text-center select-none reveal relative" id="heroSection">
+  {config.demoMode && <p class="demo-notice" role="note">{config.demoNotice}</p>}
+  <h1 class="hero-names font-cursive text-4xl sm:text-5xl md:text-6xl font-bold tracking-wide leading-tight">
+    {config.boy}
+    <span class="hero-heart inline-block text-3xl sm:text-4xl md:text-5xl mx-1">♥</span>
+    {config.girl}
+  </h1>
+  <p class="font-hand text-pink-200/60 text-xl sm:text-2xl mt-2 tracking-widest transition-opacity duration-500" id="motto">
+    {motto}
+  </p>
+</section>
+
+<style>
+  .demo-notice {
+    width: fit-content;
+    margin: 0 auto 1.25rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid rgba(255, 107, 157, 0.3);
+    border-radius: 999px;
+    background: rgba(255, 107, 157, 0.08);
+    color: var(--pink);
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+  }
+  @media (max-width: 400px) {
+    .hero-names { font-size: 2rem; }
+    #motto { font-size: 1.05rem; letter-spacing: 0.08em; }
+  }
+</style>

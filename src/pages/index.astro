@@ -1,0 +1,91 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Loader from '../components/Loader.astro';
+import Starfield from '../components/Starfield.astro';
+import FloatingHearts from '../components/FloatingHearts.astro';
+import Hero from '../components/Hero.astro';
+import TodaySummary from '../components/TodaySummary.astro';
+import Stats from '../components/Stats.astro';
+import Timeline from '../components/Timeline.astro';
+import Timers from '../components/Timers.astro';
+import WishList from '../components/WishList.astro';
+import Anniversary from '../components/Anniversary.astro';
+import Share from '../components/Share.astro';
+import FloatingActions from '../components/FloatingActions.astro';
+import Music from '../components/Music.astro';
+import PhotoWall from '../components/PhotoWall.astro';
+import Footer from '../components/Footer.astro';
+import GoogleAnalytics from '../components/GoogleAnalytics.astro';
+import AppScript from '../components/AppScript.astro';
+import { CONFIG, resolveSectionOrder } from '../config';
+import { getMessages, type LocaleCode } from '../i18n/utils';
+import { LOCALE_CODES, DEFAULT_LOCALE, isValidLocale } from '../i18n/locales';
+
+let siteLocale = CONFIG.siteLocale || DEFAULT_LOCALE;
+if (!isValidLocale(siteLocale)) {
+  console.warn(`[Love Page] Invalid siteLocale "${siteLocale}", falling back to "${DEFAULT_LOCALE}"`);
+  siteLocale = DEFAULT_LOCALE;
+}
+const messages = getMessages(siteLocale as LocaleCode);
+const alternateLocales = LOCALE_CODES.map((code) => ({ code, slug: '' }));
+const sections = CONFIG.sections ?? {};
+const sectionOrder = resolveSectionOrder(CONFIG);
+---
+
+<BaseLayout
+  title={`${CONFIG.boy} ♥ ${CONFIG.girl}`}
+  config={CONFIG}
+  locale={siteLocale}
+  messages={messages}
+  alternateLocales={alternateLocales}
+>
+  <GoogleAnalytics config={CONFIG} />
+  <Loader messages={messages} />
+  <Starfield />
+  <FloatingHearts />
+
+  <main class="relative z-10 min-h-screen flex flex-col items-center justify-center px-4 py-8 main-content" style="gap: var(--section-gap);">
+    <Hero config={CONFIG} />
+    {sectionOrder.map((key) => {
+      if (sections[key] === false) return null;
+      switch (key) {
+        case 'todaySummary':
+          return <TodaySummary config={CONFIG} messages={messages} />;
+        case 'stats':
+          return <Stats config={CONFIG} messages={messages} />;
+        case 'timers':
+          return (
+            <section class="w-full max-w-xl sm:max-w-2xl lg:max-w-3xl flex flex-col items-center">
+              <h2 class="section-title reveal w-full">{messages.sections.timers}</h2>
+              <Timers config={CONFIG} messages={messages} />
+            </section>
+          );
+        case 'timeline':
+          return (
+            <section class="w-full max-w-xl sm:max-w-2xl lg:max-w-3xl flex flex-col items-center">
+              <h2 class="section-title reveal w-full">{messages.sections.timeline}</h2>
+              <Timeline config={CONFIG} messages={messages} />
+            </section>
+          );
+        case 'anniversary':
+          return (
+            <section class="w-full max-w-xl sm:max-w-2xl lg:max-w-3xl flex flex-col items-center">
+              <h2 class="section-title reveal w-full">{messages.sections.anniversary}</h2>
+              <Anniversary config={CONFIG} messages={messages} />
+            </section>
+          );
+        case 'wishes':
+          return CONFIG.wishes?.length ? <WishList config={CONFIG} messages={messages} /> : null;
+        default:
+          return null;
+      }
+    })}
+    <Footer config={CONFIG} messages={messages} />
+  </main>
+
+  {sections.photoWall !== false && <PhotoWall config={CONFIG} messages={messages} />}
+  <FloatingActions config={CONFIG} messages={messages} />
+  {CONFIG.music.enabled && <Music config={CONFIG} messages={messages} />}
+  <Share config={CONFIG} messages={messages} />
+  <AppScript config={CONFIG} messages={messages} />
+</BaseLayout>

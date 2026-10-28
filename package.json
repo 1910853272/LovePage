@@ -1,0 +1,33 @@
+{
+  "name": "love-page",
+  "version": "1.0.0",
+  "description": "专属爱页面 — 基于 Astro 5 的情侣纪念日静态站点",
+  "type": "module",
+  "author": "funnyzak",
+  "license": "AGPL-3.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/1910853272/LovePage.git"
+  },
+  "keywords": [
+    "astro",
+    "anniversary",
+    "love",
+    "couple",
+    "static-site"
+  ],
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "test": "node --experimental-strip-types --test tests/*.test.ts",
+    "check:dist": "node scripts/check-dist.mjs"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.0",
+    "@playform/compress": "^0.2.1",
+    "@tailwindcss/vite": "^4.0.0",
+    "astro": "^5.0.0",
+    "tailwindcss": "^4.0.0"
+  }
+}

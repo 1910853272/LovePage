@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="800" viewBox="0 0 800 800">
+  <defs><linearGradient id="bg" x2="1" y2="1"><stop stop-color="#1b2440"/><stop offset="1" stop-color="#453451"/></linearGradient><linearGradient id="ring"><stop stop-color="#f7ce8f"/><stop offset="1" stop-color="#f59dbb"/></linearGradient></defs>
+  <rect width="800" height="800" fill="url(#bg)"/>
+  <g fill="#ffe3cd"><circle cx="144" cy="191" r="3"/><circle cx="653" cy="169" r="3"/><circle cx="598" cy="450" r="2"/><circle cx="170" cy="435" r="3"/></g>
+  <g fill="none" stroke="url(#ring)" stroke-width="12"><circle cx="343" cy="350" r="100"/><circle cx="457" cy="350" r="100"/></g>
+  <path d="m400 192 8 17 18 3-13 14 3 20-16-10-16 10 3-20-13-14 18-3Z" fill="#ffe3cd"/>
+  <text x="400" y="587" text-anchor="middle" fill="#ffe2eb" font-family="Georgia,serif" font-size="28" letter-spacing="9">SIDE BY SIDE</text>
+  <text x="400" y="634" text-anchor="middle" fill="#c9bdd8" font-family="sans-serif" font-size="16" letter-spacing="4">YOUR MEMORY GOES HERE</text>
+</svg>

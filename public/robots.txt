@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /LovePage/
+
+Sitemap: https://1910853272.github.io/LovePage/sitemap-index.xml
