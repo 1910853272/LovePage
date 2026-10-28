@@ -1,6 +1,6 @@
 # Love Page
 
-> 此仓库为 `1910853272/LovePage` 的二次开发版本，目前公开展示示例内容。
+> 此仓库为李增圣与曾莎薇的时光记录，照片暂用占位插画，等待补充。
 > [访问网页](https://1910853272.github.io/LovePage/) · [素材替换与部署说明](./docs/CUSTOMIZATION.md) · [实施与验证记录](./docs/IMPLEMENTATION.md)
 >
 > 以下保留原项目功能介绍与来源信息；本仓库的实际配置入口为 `src/config.ts`，发布方式以以上说明为准。

@@ -110,14 +110,14 @@ function defaultAnniversaries(config: Pick<Config, 'loveDate' | 'marriageDate'>)
   return [
     { label: '相恋纪念日', icon: '💕', date: config.loveDate },
     { label: '结婚纪念日', icon: '💍', date: config.marriageDate },
-  ];
+  ].filter((mark) => Boolean(mark.date));
 }
 
 function defaultTimers(config: Pick<Config, 'loveDate' | 'marriageDate'>): TimeMark[] {
   return [
     { label: '相恋时光', icon: '💕', date: config.loveDate },
     { label: '婚姻时光', icon: '💍', date: config.marriageDate },
-  ];
+  ].filter((mark) => Boolean(mark.date));
 }
 
 export function resolveTimers(

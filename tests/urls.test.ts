@@ -1,10 +1,19 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { absoluteSiteUrl, withBase } from '../src/urls.ts';
-import { resolveIosStartupImages, resolveSiteImage, resolveSiteLogo } from '../src/config/resolvers.ts';
+import { resolveAnniversaries, resolveTimers, resolveIosStartupImages, resolveSiteImage, resolveSiteLogo } from '../src/config/resolvers.ts';
 import { deepMerge, parseEnvConfigPatch } from '../src/config/merge.ts';
 
 const site = 'https://1910853272.github.io/LovePage/';
+
+test('unmarried couples do not receive marriage timers or anniversaries through defaults', () => {
+  const config = { loveDate: '2025-01-01', marriageDate: '' };
+  assert.deepEqual(resolveTimers(config), [{ date: '2025-01-01', label: '相恋时光', icon: '💕' }]);
+  assert.deepEqual(resolveAnniversaries(config), [{ date: '2025-01-01', label: '相恋纪念日', icon: '💕' }]);
+  const married = { ...config, marriageDate: '2026-10-01' };
+  assert.equal(resolveTimers(married).length, 2);
+  assert.equal(resolveAnniversaries(married).length, 2);
+});
 
 test('local resources receive the deployment base exactly once', () => {
   for (const input of ['photos/合影.jpg', '/photos/合影.jpg', './photos/合影.jpg', '/LovePage/photos/合影.jpg']) {
