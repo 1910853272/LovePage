@@ -209,7 +209,7 @@
 }
 
 /* ── Hero ── */
-.hero-names {
+.hero-name {
   background: linear-gradient(135deg, #fff 20%, var(--pink-light) 80%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;

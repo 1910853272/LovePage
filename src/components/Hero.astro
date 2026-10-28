@@ -12,9 +12,9 @@ const motto = resolveMotto(config);
 <section class="text-center select-none reveal relative" id="heroSection">
   {config.demoMode && <p class="demo-notice" role="note">{config.demoNotice}</p>}
   <h1 class="hero-names font-cursive text-4xl sm:text-5xl md:text-6xl font-bold tracking-wide leading-tight">
-    {config.boy}
+    <span class="hero-name">{config.boy}</span>
     <span class="hero-heart inline-block text-3xl sm:text-4xl md:text-5xl mx-1">♥</span>
-    {config.girl}
+    <span class="hero-name">{config.girl}</span>
   </h1>
   <p class="font-hand text-pink-200/60 text-xl sm:text-2xl mt-2 tracking-widest transition-opacity duration-500" id="motto">
     {motto}

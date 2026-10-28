@@ -58,7 +58,7 @@ body {
   background: rgba(255, 215, 0, 0.15) !important;
 }
 
-[data-theme='light'] .hero-names {
+[data-theme='light'] .hero-name {
   background: linear-gradient(135deg, #2d2327 20%, var(--pink-deep) 80%);
   -webkit-background-clip: text;
   background-clip: text;
