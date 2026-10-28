@@ -67,10 +67,11 @@ const localRootKey = STORAGE_ROOT_KEYS.local;
 const sessionRootKey = STORAGE_ROOT_KEYS.session;
 const storeSchemaVersion = STORE_SCHEMA_VERSION;
 const defaultTheme = config.defaultTheme || 'dark';
+const initialThemeColor = defaultTheme === 'light' ? '#fffbfc' : '#0a0a1a';
 const buildTime = new Date().toISOString();
 ---
 
-<html lang={locale}>
+<html lang={locale} data-theme={defaultTheme === 'light' ? 'light' : 'dark'}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -80,13 +81,13 @@ const buildTime = new Date().toISOString();
     <meta name="author" content={`${config.boy} & ${config.girl}`} />
     <meta name="build-time" content={buildTime} />
     <meta name="robots" content={robots} />
-    <meta name="theme-color" content="#0a0a1a" />
+    <meta name="theme-color" content={initialThemeColor} />
     <meta name="application-name" content={siteName} />
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-title" content={siteName} />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-    <meta name="msapplication-TileColor" content="#0a0a1a" />
+    <meta name="msapplication-TileColor" content={initialThemeColor} />
     <meta name="msapplication-TileImage" content={siteLogo} />
     <link rel="manifest" href={withBase('/manifest.webmanifest', import.meta.env.BASE_URL)} />
     <link rel="canonical" href={canonicalUrl} />

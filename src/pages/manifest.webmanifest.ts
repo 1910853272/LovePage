@@ -48,8 +48,8 @@ export function GET(): Response {
     scope: withBase('/', import.meta.env.BASE_URL),
     display: 'standalone',
     orientation: 'portrait',
-    theme_color: '#0a0a1a',
-    background_color: '#0a0a1a',
+    theme_color: CONFIG.defaultTheme === 'light' ? '#fffbfc' : '#0a0a1a',
+    background_color: CONFIG.defaultTheme === 'light' ? '#fffbfc' : '#0a0a1a',
     icons: buildIcons(logoSrc),
     prefer_related_applications: false,
   };

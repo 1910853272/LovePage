@@ -84,14 +84,14 @@
 }
 
 .floating-actions {
-  position: fixed;
-  bottom: 16px;
-  right: 16px;
-  z-index: 100;
+  position: relative;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 10px;
-  align-items: flex-end;
+  align-items: center;
+  max-width: 100%;
 }
 
 .floating-actions .theme-toggle,
@@ -977,6 +977,7 @@
 /* ── Anniversary ── */
 .anniversary-card {
   position: relative;
+  padding-top: 3rem;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -1133,10 +1134,8 @@
 }
 
 .music-panel {
-  position: fixed;
-  bottom: 120px;
-  right: 16px;
-  z-index: 100;
+  position: relative;
+  display: none;
   padding: 10px 16px;
   min-width: 180px;
   max-width: calc(100vw - 32px);
@@ -1147,6 +1146,7 @@
 }
 
 .music-panel.show {
+  display: block;
   opacity: 1;
   visibility: visible;
   transform: translateY(0) scale(1);
@@ -1204,6 +1204,7 @@
 
 /* ── Click Hearts ── */
 .click-heart {
+  display: none;
   position: fixed;
   pointer-events: none;
   z-index: 50;
@@ -1578,6 +1579,8 @@
 }
 
 .photo-wall-title {
+  padding-inline: 32px;
+  overflow-wrap: anywhere;
   text-align: center;
   color: var(--pink-light);
   font-size: 1rem;
@@ -1649,7 +1652,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 40px;
+  padding: 64px 72px 24px;
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s ease, visibility 0.3s ease;
@@ -1720,18 +1723,20 @@
   flex-direction: column;
   align-items: center;
   gap: 12px;
-  max-width: 90vw;
-  max-height: 85vh;
+  min-width: 0;
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .photo-lightbox-content img {
   max-width: 100%;
-  max-height: 75vh;
+  max-height: calc(100dvh - 150px);
   object-fit: contain;
   border-radius: 8px;
 }
 
 .photo-lightbox-caption {
+  overflow-wrap: anywhere;
   color: rgba(255, 255, 255, 0.9);
   font-size: 14px;
   text-align: center;
@@ -1916,10 +1921,23 @@
     max-width: calc(100vw - 24px);
   }
 
-  /* 给右下角悬浮按钮留出空间，避免盖住最后的内容 */
+  /* 工具栏已进入正常布局，正文无需为悬浮控件预留空白。 */
   .main-content {
-    padding-bottom: calc(9rem + env(safe-area-inset-bottom, 0px));
+    padding-bottom: calc(2rem + env(safe-area-inset-bottom, 0px));
   }
+
+  .photo-lightbox {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: minmax(0, 1fr) 44px;
+    gap: 12px;
+    padding: 64px 16px 20px;
+  }
+  .photo-lightbox-content { grid-column: 1 / -1; grid-row: 1; justify-self: center; }
+  .photo-lightbox-prev, .photo-lightbox-next { position: static; transform: none; justify-self: center; grid-row: 2; }
+  .photo-lightbox-prev { grid-column: 1; }
+  .photo-lightbox-next { grid-column: 2; }
+  .photo-lightbox-content img { max-height: calc(100dvh - 210px); }
 }
 
 @media (min-height: 900px) {

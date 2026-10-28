@@ -264,13 +264,13 @@ const modeLabel = ui.modes;
       }
       @media (max-width: 480px) {
         .music-panel {
-          left: 12px;
-          right: 12px;
           padding: 8px 10px;
-          width: auto;
+          width: 100%;
+          min-width: 0;
           transform: translateY(0) scale(1);
         }
         .music-panel > div {
+          flex-wrap: wrap;
           gap: 8px;
           width: 100%;
           justify-content: space-between;
@@ -313,6 +313,7 @@ const modeLabel = ui.modes;
     define:vars={{
       tracks: music.tracks,
       musicAutoPlay: music.autoPlay,
+      musicStartOnInteraction: music.startOnInteraction,
       initialPlayMode: music.playMode,
       allowModeSwitch: music.allowModeSwitch,
       startPolicy: music.startPolicy,
@@ -355,7 +356,7 @@ const modeLabel = ui.modes;
 
       let open = false;
       let playing = false;
-      let pendingAutoplay = false;
+      let pendingAutoplay = musicAutoPlay;
       let idx = 0;
       let playMode = normalizeMode(initialPlayMode);
       let history = [];
@@ -580,6 +581,7 @@ const modeLabel = ui.modes;
         if (!musicAutoPlay) return;
         audio.play().then(() => {
           pendingAutoplay = false;
+          document.removeEventListener('click', unlockOnGesture, true);
           syncPlayingUI(true);
         }).catch(() => {
           pendingAutoplay = true;
@@ -642,7 +644,11 @@ const modeLabel = ui.modes;
         });
       }
 
-      audio.addEventListener('play', () => syncPlayingUI(true));
+      audio.addEventListener('play', () => {
+        pendingAutoplay = false;
+        document.removeEventListener('click', unlockOnGesture, true);
+        syncPlayingUI(true);
+      });
       audio.addEventListener('pause', () => syncPlayingUI(false));
       audio.addEventListener('ended', playNextByMode);
       audio.addEventListener('error', () => {
@@ -653,15 +659,14 @@ const modeLabel = ui.modes;
       });
       window.addEventListener('resize', updateMarqueeState);
 
-      const unlockOnGesture = () => {
+      const unlockOnGesture = (event) => {
+        if (!event.isTrusted || event.target?.closest?.('#musicPanel')) return;
+        if (passwordGuardEnabled && store?.getLocal(unlockedStorageKey) !== expectedPassword) return;
         if (pendingAutoplay) {
           tryAutoplay();
-          document.removeEventListener('click', unlockOnGesture);
-          document.removeEventListener('touchstart', unlockOnGesture);
         }
       };
-      document.addEventListener('click', unlockOnGesture, { passive: true });
-      document.addEventListener('touchstart', unlockOnGesture, { passive: true });
+      document.addEventListener('click', unlockOnGesture, { capture: true, passive: true });
 
       const tryAutoplayWithCheck = () => {
         if (!musicAutoPlay) return;
@@ -682,7 +687,7 @@ const modeLabel = ui.modes;
         tryAutoplay();
       };
 
-      if (musicAutoPlay) tryAutoplayWithCheck();
+      if (musicAutoPlay && !musicStartOnInteraction) tryAutoplayWithCheck();
     })();
   </script>
 )}

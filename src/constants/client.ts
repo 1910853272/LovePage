@@ -8,7 +8,7 @@ export const STORAGE_ROOT_KEYS = {
 export const STORAGE_KEYS = {
   unlocked: 'unlocked',
   passwordRateLimit: 'passwordRateLimit',
-  theme: 'theme',
+  theme: 'theme-v2-light',
   wishes: 'wishes',
   visits: 'visits',
   lastVisitAt: 'lastVisitAt',

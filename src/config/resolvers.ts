@@ -96,6 +96,7 @@ export function resolveMusic(config: Pick<Config, 'music'>): MusicConfig {
   return {
     enabled: resolveBool(music?.enabled, true),
     autoPlay: resolveBool(music?.autoPlay, true),
+    startOnInteraction: resolveBool(music?.startOnInteraction, false),
     playMode: resolvePlayMode(music?.playMode),
     allowModeSwitch: resolveBool(music?.allowModeSwitch, true),
     startPolicy: resolveStartPolicy(music?.startPolicy),

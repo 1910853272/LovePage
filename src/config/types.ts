@@ -63,6 +63,8 @@ export type MusicPlayMode = 'single' | 'sequence' | 'shuffle';
 export type MusicStartPolicy = 'first' | 'last' | 'random';
 
 export interface MusicConfig {
+  /** Wait for the first page click before attempting automatic playback. */
+  startOnInteraction?: boolean;
   enabled: boolean;
   autoPlay: boolean;
   playMode: MusicPlayMode;

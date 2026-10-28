@@ -237,7 +237,8 @@ function initWelcomeFlow(payload: AppPayload) {
     emitToast(message, 3500);
   }
 
-  addEventListener('load', () => {
+  // External fonts and images must not keep the loading overlay over the page.
+  const finishStartup = () => {
     const loader = document.getElementById('loader');
     const guard = document.getElementById('passwordGuard');
     let locked = false;
@@ -277,7 +278,12 @@ function initWelcomeFlow(payload: AppPayload) {
     }
 
     finishLoading();
-  });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', finishStartup, { once: true });
+  } else {
+    finishStartup();
+  }
 }
 
 export function initAppEffects(options?: { payloadElementId?: string }) {

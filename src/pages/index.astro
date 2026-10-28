@@ -47,6 +47,8 @@ const sectionOrder = resolveSectionOrder(CONFIG);
 
   <main class="relative z-10 min-h-screen flex flex-col items-center justify-center px-4 py-8 main-content" style="gap: var(--section-gap);">
     <Hero config={CONFIG} />
+    <FloatingActions config={CONFIG} messages={messages} />
+    {CONFIG.music.enabled && <Music config={CONFIG} messages={messages} />}
     {sectionOrder.map((key) => {
       if (sections[key] === false) return null;
       switch (key) {
@@ -87,8 +89,6 @@ const sectionOrder = resolveSectionOrder(CONFIG);
   </main>
 
   {sections.photoWall !== false && <PhotoWall config={CONFIG} messages={messages} />}
-  <FloatingActions config={CONFIG} messages={messages} />
-  {CONFIG.music.enabled && <Music config={CONFIG} messages={messages} />}
   <Share config={CONFIG} messages={messages} />
   <AppScript config={CONFIG} messages={messages} />
 </BaseLayout>

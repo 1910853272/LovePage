@@ -50,6 +50,8 @@ const config = CONFIG;
 
   <main class="relative z-10 min-h-screen flex flex-col items-center justify-center px-4 py-8 main-content" style="gap: var(--section-gap);">
     <Hero config={config} />
+    <FloatingActions config={config} messages={messages} />
+    {config.music.enabled && <Music config={config} messages={messages} />}
     {config.sections?.todaySummary !== false && <TodaySummary config={config} messages={messages} />}
     {config.sections?.stats !== false && <Stats config={config} messages={messages} />}
     {config.sections?.memories !== false && <Memories config={config} />}
@@ -76,8 +78,6 @@ const config = CONFIG;
   </main>
 
   {config.sections?.photoWall !== false && <PhotoWall config={config} messages={messages} />}
-  <FloatingActions config={config} messages={messages} />
-  {config.music.enabled && <Music config={config} messages={messages} />}
   <Share config={config} messages={messages} />
   <AppScript config={config} messages={messages} />
 </BaseLayout>

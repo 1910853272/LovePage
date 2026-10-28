@@ -34,6 +34,9 @@ const copy = config.memories;
   .memory-card img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; object-position: center; border-radius: 11px; }
   .memory-caption { padding: 12px 4px 8px; font-size: 0.75rem; color: var(--pink-light); line-height: 1.6; }
   .memories-all { margin-top: 18px; padding: 8px 12px; border: 0; background: transparent; color: var(--pink); font-size: 0.8rem; cursor: pointer; }
+  :global([data-theme='light']) .memory-caption,
+  :global([data-theme='light']) .memories-hint,
+  :global([data-theme='light']) .memories-all { color: #a3315d; opacity: 1; }
   @media (max-width: 640px) {
     .memories-track { display: flex; overflow-x: auto; gap: 14px; scroll-snap-type: x mandatory; padding: 6px 2px 12px; }
     .memory-card { flex: 0 0 72%; scroll-snap-align: start; }

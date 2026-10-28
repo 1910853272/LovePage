@@ -34,7 +34,7 @@ const motto = resolveMotto(config);
     letter-spacing: 0.08em;
   }
   @media (max-width: 400px) {
-    .hero-names { font-size: 2rem; }
+    .hero-names { font-size: clamp(1.4rem, 7vw, 2rem); overflow-wrap: anywhere; }
     #motto { font-size: 1.05rem; letter-spacing: 0.08em; }
   }
 </style>
