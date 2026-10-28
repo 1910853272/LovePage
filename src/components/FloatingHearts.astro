@@ -11,7 +11,8 @@
       const el = document.createElement('div');
       el.className = 'float-heart';
       el.textContent = icons[i % icons.length];
-      el.style.left = Math.random() * 100 + '%';
+      // Keep decoration in the outer gutters, away from names and controls.
+      el.style.left = (i % 2 === 0 ? Math.random() * 5 : 95 + Math.random() * 5) + '%';
       el.style.top = Math.random() * 100 + '%';
       el.style.fontSize = 16 + Math.random() * 20 + 'px';
       el.style.animationDelay = Math.random() * -15 + 's';

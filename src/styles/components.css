@@ -1488,6 +1488,10 @@
   opacity: 0.22;
 }
 
+@media (max-width: 900px) {
+  #floating-hearts { display: none; }
+}
+
 @keyframes floatDrift {
 
   0%,
