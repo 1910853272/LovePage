@@ -440,7 +440,7 @@
 .timeline-track {
   position: relative;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   padding: 0 8px;
 }
@@ -482,6 +482,8 @@
 .timeline-date {
   line-height: 1.2;
 }
+
+.timeline-icon { height: 24px; line-height: 24px; }
 
 .timeline-label {
   line-height: 1.3;
@@ -1453,8 +1455,10 @@
 }
 
 .timeline-node.reveal {
+  transform: none;
   transition-delay: calc(var(--i, 0) * 0.08s);
 }
+.timeline-node.reveal.visible { transform: none; }
 
 /* ── Timer Tick ── */
 .timer-digit,

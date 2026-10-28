@@ -34,14 +34,14 @@ const timelineHint = messages?.timeline?.hint || DEFAULT_MESSAGES.timeline.hint;
           data-date={m.date}
           data-icon={m.icon}
         >
-          <div class="text-sm sm:text-base mb-1.5">{m.icon}</div>
+          <div class="timeline-icon text-sm sm:text-base mb-1.5">{m.icon}</div>
           <div class="timeline-dot"></div>
           <div class="timeline-date text-white/50 text-[11px] sm:text-xs mt-1.5">{m.date.replace(/-/g, '.')}</div>
           <div class="timeline-label text-white/60 text-xs sm:text-sm">{m.label}</div>
         </div>
       ))}
       <div class="timeline-node timeline-node-now">
-        <div class="text-sm sm:text-base mb-1.5">✨</div>
+        <div class="timeline-icon text-sm sm:text-base mb-1.5">✨</div>
         <div class="timeline-dot glow-gold"></div>
         <div class="timeline-date text-white/50 text-[11px] sm:text-xs mt-1.5">{timelineNow}</div>
         <div class="timeline-label text-white/60 text-xs sm:text-sm">{timelineNow}</div>
@@ -145,14 +145,6 @@ const timelineHint = messages?.timeline?.hint || DEFAULT_MESSAGES.timeline.hint;
 
     const updateLine = () => {
       if (!timelineLine) return;
-      if (!isScrollable) {
-        timelineLine.style.top = '';
-        timelineLine.style.left = '';
-        timelineLine.style.right = '';
-        timelineLine.style.width = '';
-        return;
-      }
-
       const nodes = getNodes();
       if (nodes.length < 2) return;
       const first = nodes[0];
@@ -162,9 +154,9 @@ const timelineHint = messages?.timeline?.hint || DEFAULT_MESSAGES.timeline.hint;
       const start = first.offsetLeft + first.clientWidth / 2;
       const end = last.offsetLeft + last.clientWidth / 2;
       if (firstDot) {
-        const containerRect = container.getBoundingClientRect();
-        const dotRect = firstDot.getBoundingClientRect();
-        const dotCenterY = dotRect.top - containerRect.top + dotRect.height / 2;
+        // Use layout coordinates: reveal/hover transforms must not move the line
+        // into the date row or affect measurement before the section is visible.
+        const dotCenterY = first.offsetTop + firstDot.offsetTop + firstDot.offsetHeight / 2;
         timelineLine.style.top = `${dotCenterY}px`;
       }
       timelineLine.style.left = `${start}px`;
@@ -210,6 +202,7 @@ const timelineHint = messages?.timeline?.hint || DEFAULT_MESSAGES.timeline.hint;
       if (isScrollable) {
         updateIndicators();
       } else {
+        updateLine();
         updateFades();
         updateHint();
       }
