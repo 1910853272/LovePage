@@ -26,3 +26,11 @@ Chrome 实测确认计时实时变化、本地插画加载、照片切换及浅�
 兼容范围更新锁文件后，npm audit 从 21 项降为 9 项：1 critical、7 high、1 low。剩余涉及 Astro 5 与压缩/构建依赖，部分修复要求跨主要版本升级，部分暂无兼容修复。本批保留 Astro 5，不执行强制升级。
 
 当前只发布由维护者提供内容生成的静态文件，没有服务端、在线上传或不可信 AVIF 输入。仍需在后续框架升级时处理这些告警，不应将当前状态理解为审计零风险。参考：[Astro define:vars 注入边界](https://github.com/advisories/GHSA-j687-52p2-xcff)、[AVIF 处理的适用条件](https://github.com/advisories/GHSA-26w7-cxv4-gfx2)。
+
+## 发布结果
+
+- 已创建公开仓库：https://github.com/1910853272/LovePage ，发布分支 `main`。
+- Pages 使用 GitHub Actions，HTTPS 开启，无自定义域名。
+- 首次部署成功：[Actions 40650487927](https://github.com/1910853272/LovePage/actions/runs/40650487927)。CI 的测试、构建、产物校验和部署均成功。
+- 匿名 HTTP 验证：首页、`en-us/`、`zh-cn/` 均返回 200；18 个同源页面和资源 URL 均可访问；线上 manifest 的启动地址与作用域为 `/LovePage/`。
+- 网站：https://1910853272.github.io/LovePage/ 。浏览器控制设置仍阻止补充手机视觉与线上 Chrome 复验，该限制不影响已确认的发布结果。
