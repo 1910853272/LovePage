@@ -63,15 +63,15 @@ const ENV_CONFIG_PATCH = parseEnvConfigPatch(import.meta.env.VITE_LOVE_CONFIG_JS
 const PERSONAL_CONFIG: Partial<Config> = {
   demoMode: false,
   repositoryUrl: 'https://github.com/1910853272/LovePage',
-  boy: '李增圣',
-  girl: '曾莎薇',
+  boy: 'Mr Li',
+  girl: 'Mrs Zeng',
   loveDate: '2025-01-01',
   marriageDate: '',
   siteUrl: 'https://1910853272.github.io/LovePage/',
-  siteName: '李增圣 ♥ 曾莎薇',
+  siteName: 'Mr Li ♥ Mrs Zeng',
   siteLocale: 'zh-CN',
   defaultTheme: 'light',
-  seoDescription: '李增圣与曾莎薇的故事：2024年8月8日初见，2025年1月1日相恋。记录萍乡、北京、广州、秦皇岛、天津、武汉、长沙与洛阳的回忆。',
+  seoDescription: 'Mr Li 与 Mrs Zeng 的故事：2024年8月8日初见，2025年1月1日相恋。记录萍乡、北京、广州、秦皇岛、天津、武汉、长沙与洛阳的回忆。',
   siteImage: '/images/share-cover.png',
   siteLogo: '/images/icon-512.png',
   motto: '其实我并不讨厌等待的感觉',
@@ -119,7 +119,7 @@ const PERSONAL_CONFIG: Partial<Config> = {
   passwordConfig: { ...DEFAULT_CONFIG.passwordConfig!, enabled: false, password: '' },
   privacy: { privateMode: true, noIndex: true },
   googleAnalyticsId: '',
-  welcomeMessage: '欢迎来到李增圣与曾莎薇的时光记录 ♥',
+  welcomeMessage: '欢迎来到 Mr Li 与 Mrs Zeng 的时光记录 ♥',
 };
 
 const RAW_CONFIG: Config = deepMerge(deepMerge(DEFAULT_CONFIG, PERSONAL_CONFIG), ENV_CONFIG_PATCH);
