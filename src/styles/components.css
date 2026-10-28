@@ -94,9 +94,14 @@
   gap: 8px;
   align-items: center;
   max-width: 100%;
+  opacity: 0.65;
+  transition: opacity 0.2s;
 }
 
 .floating-actions .float-action-btn { width: 32px; height: 32px; }
+.floating-actions:hover, .floating-actions:focus-within { opacity: 1; }
+.floating-actions .float-action-btn { box-shadow: none; backdrop-filter: none; }
+[data-theme='light'] .floating-actions .float-action-btn { background: rgba(255, 255, 255, 0.8); border-color: rgba(163, 49, 93, 0.16); color: #a4788a; }
 .main-content { padding-right: 56px; }
 
 .floating-actions .theme-toggle,
@@ -810,6 +815,8 @@
 }
 
 @media (max-width: 640px) {
+  .floating-actions .float-action-btn { width: 30px; height: 30px; }
+  .floating-actions .float-action-btn svg { width: 15px; height: 15px; }
   .share-preview-overlay {
     flex-direction: column;
     align-items: center;
