@@ -44,16 +44,16 @@ const modeLabel = ui.modes;
 
 {showMusic && (
   <>
-    <div class="music-panel glass" id="musicPanel" hidden style="display: none !important">
+    <div class="music-panel glass show" id="musicPanel">
       <div class="flex items-center gap-3">
-        <button
+        {music.tracks.length > 1 && <button
           class="music-nav-btn"
           id="musicPrevBtn"
           aria-label={ui.prevTrack}
           title={ui.prevTrack}
         >
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
-        </button>
+        </button>}
 
         <div class="music-info-container">
           <div class="music-title-wrapper" id="musicTitleWrapper">
@@ -82,16 +82,16 @@ const modeLabel = ui.modes;
           <svg id="pauseIcon" class="hidden" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
         </button>
 
-        <button
+        {music.tracks.length > 1 && <button
           class="music-nav-btn"
           id="musicNextBtn"
           aria-label={ui.nextTrack}
           title={ui.nextTrack}
         >
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
-        </button>
+        </button>}
 
-        <button
+        {music.allowModeSwitch && <button
           class="music-mode-btn"
           id="musicModeBtn"
           aria-label={`${ui.playMode}：${modeLabel[music.playMode]}`}
@@ -99,29 +99,23 @@ const modeLabel = ui.modes;
           disabled={!music.allowModeSwitch}
         >
           <span class="music-mode-text" id="musicModeText">{modeLabel[music.playMode]}</span>
-        </button>
-
-        <div class="music-close-divider"></div>
-
-        <button
-          class="music-close-btn"
-          id="musicCloseBtn"
-          aria-label={ui.closePanel}
-          title={ui.closePanel}
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
-        </button>
+        </button>}
       </div>
     </div>
-    <audio id="bgMusic" preload="auto"></audio>
+    <audio id="bgMusic" preload="metadata"></audio>
 
     <style>
+      .music-panel {
+        width: min(100%, 360px);
+        min-width: 0;
+        padding: 12px 16px;
+      }
       .music-info-container {
         display: flex;
         flex-direction: column;
         gap: 2px;
         min-width: 0;
-        max-width: 140px;
+        flex: 1;
       }
       .music-title-wrapper {
         position: relative;
@@ -201,6 +195,9 @@ const modeLabel = ui.modes;
         to { height: 100%; }
       }
       .music-play-btn {
+        width: 44px;
+        height: 44px;
+        flex-shrink: 0;
         color: var(--music-control-strong, rgba(255, 255, 255, 0.92));
         opacity: 0.8;
         transition: all 0.2s;
@@ -280,7 +277,6 @@ const modeLabel = ui.modes;
         .music-info-container {
           flex: 1 1 auto;
           min-width: 0;
-          max-width: clamp(64px, 24vw, 120px);
         }
         .music-nav-btn,
         .music-close-btn {
@@ -348,7 +344,6 @@ const modeLabel = ui.modes;
       const nextBtn = document.getElementById('musicNextBtn');
       const modeBtn = document.getElementById('musicModeBtn');
       const modeText = document.getElementById('musicModeText');
-      const closeBtn = document.getElementById('musicCloseBtn');
       const titleWrapperEl = document.getElementById('musicTitleWrapper');
       const titleEl = document.getElementById('musicTitle');
       const titleCloneEl = document.getElementById('musicTitleClone');
@@ -356,7 +351,6 @@ const modeLabel = ui.modes;
 
       if (!audio || !btn || !panel || !pp || !titleWrapperEl || !titleEl) return;
 
-      let open = false;
       let playing = false;
       let pendingAutoplay = musicAutoPlay;
       let idx = 0;
@@ -492,6 +486,8 @@ const modeLabel = ui.modes;
         btn.setAttribute('aria-label', label);
         btn.setAttribute('title', label);
         btn.setAttribute('aria-pressed', String(isPlaying));
+        pp.setAttribute('aria-label', label);
+        pp.setAttribute('aria-pressed', String(isPlaying));
         if (playIcon && pauseIcon) {
           playIcon.classList.toggle('hidden', isPlaying);
           pauseIcon.classList.toggle('hidden', !isPlaying);
@@ -644,15 +640,6 @@ const modeLabel = ui.modes;
         });
       }
 
-      if (closeBtn) {
-        closeBtn.addEventListener('click', (e) => {
-          e.stopPropagation();
-          open = false;
-          panel.classList.remove('show');
-          panel.classList.remove('shake-hint');
-        });
-      }
-
       audio.addEventListener('play', () => {
         pendingAutoplay = false;
         document.removeEventListener('click', unlockOnGesture, true);
@@ -696,7 +683,15 @@ const modeLabel = ui.modes;
         tryAutoplay();
       };
 
-      if (musicAutoPlay && !musicStartOnInteraction) tryAutoplayWithCheck();
+      if (musicAutoPlay && !musicStartOnInteraction) {
+        // Let the page paint before an automatic audio request competes for bandwidth.
+        const startAfterPaint = () => requestAnimationFrame(() => requestAnimationFrame(tryAutoplayWithCheck));
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', startAfterPaint, { once: true });
+        } else {
+          startAfterPaint();
+        }
+      }
     })();
   </script>
 )}

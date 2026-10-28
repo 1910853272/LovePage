@@ -129,7 +129,12 @@ const buildTime = new Date().toISOString();
     <link
       href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&family=Ma+Shan+Zheng&display=swap"
       rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
     />
+    <noscript>
+      <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&family=Ma+Shan+Zheng&display=swap" rel="stylesheet" />
+    </noscript>
 
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
     <script

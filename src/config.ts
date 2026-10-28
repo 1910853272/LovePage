@@ -114,7 +114,7 @@ const PERSONAL_CONFIG: Partial<Config> = {
     playMode: 'single',
     allowModeSwitch: false,
     volume: 0.5,
-    tracks: [{ id: 'dong-feng-po', src: '/music/dong-feng-po.mp3', title: '东风破' }],
+    tracks: [{ id: 'dong-feng-po', src: '/music/dong-feng-po.m4a', title: '东风破' }],
   },
   passwordConfig: { ...DEFAULT_CONFIG.passwordConfig!, enabled: false, password: '' },
   privacy: { privateMode: true, noIndex: true },
