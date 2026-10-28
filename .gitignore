@@ -151,3 +151,7 @@ config.test.*.json
 .agents/
 docs/plans/
 .claude/launch.json
+
+# Local source media; publish selected/generated assets under public/ only.
+/Photo/
+/music/

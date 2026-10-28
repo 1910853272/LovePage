@@ -4,7 +4,11 @@ import { withBase } from '../urls';
 
 interface Props { config: Config }
 const { config } = Astro.props;
-const featured = (config.photos ?? []).slice(0, 4);
+const photos = config.photos ?? [];
+const selected = config.memories?.featuredUrls;
+const featured = selected?.length
+  ? selected.map((url) => ({ photo: photos.find((photo) => photo.url === url), index: photos.findIndex((photo) => photo.url === url) })).filter((entry) => entry.photo)
+  : photos.slice(0, 4).map((photo, index) => ({ photo, index }));
 const copy = config.memories;
 ---
 
@@ -13,9 +17,9 @@ const copy = config.memories;
     <h2 class="section-title" id="memoriesHeading">{copy.title}</h2>
     <p class="memories-hint">{copy.hint}</p>
     <div class="memories-track">
-      {featured.map((photo, index) => (
+      {featured.map(({ photo, index }) => (
         <button class="memory-card glass" type="button" data-memory-index={index} aria-label={photo.caption}>
-          <img src={withBase(photo.url, import.meta.env.BASE_URL)} alt={photo.caption ?? ''} loading="lazy" decoding="async" />
+          <img src={withBase(photo.thumbnail || photo.url, import.meta.env.BASE_URL)} alt={photo.caption ?? ''} loading="lazy" decoding="async" />
           <span class="memory-caption">{photo.caption}</span>
         </button>
       ))}

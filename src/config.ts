@@ -9,6 +9,7 @@
  */
 
 import { DEFAULT_CONFIG } from './config/defaults';
+import album from './config/album.json';
 import { deepMerge, parseEnvConfigPatch } from './config/merge';
 import { type Config } from './config/types';
 import { encryptPassword, isEncryptedPassword } from './passwordCipher';
@@ -70,33 +71,19 @@ const PERSONAL_CONFIG: Partial<Config> = {
   siteName: '李增圣 ♥ 曾莎薇',
   siteLocale: 'zh-CN',
   defaultTheme: 'light',
-  seoDescription: '李增圣与曾莎薇的故事：2024年8月8日初见，2025年1月1日相恋。记录广州、北京、武汉、长沙与洛阳的城市足迹。',
+  seoDescription: '李增圣与曾莎薇的故事：2024年8月8日初见，2025年1月1日相恋。记录萍乡、北京、广州、秦皇岛、天津、武汉、长沙与洛阳的回忆。',
   siteImage: '/images/share-cover.png',
   siteLogo: '/images/icon-512.png',
   motto: '把平凡的日子，写成我们的故事',
   quotes: ['把平凡的日子，写成我们的故事', '愿每一次回首，都有你在身旁', '慢慢走，把每一天都过成纪念日'],
   secretMessage: '从初见到相恋，故事仍在继续。♥',
-  milestones: [
-    { date: '2024-08-08', label: '初见', icon: '🌷' },
-    { date: '2025-01-01', label: '相恋', icon: '💕' },
-    { date: '2025-02', label: '广州', icon: '📍' },
-    { date: '2025-05-01', label: '广州', icon: '📍' },
-    { date: '2025-07', label: '北京', icon: '📍' },
-    { date: '2025-10-01', label: '武汉', icon: '📍' },
-    { date: '2026-02', label: '长沙', icon: '📍' },
-    { date: '2026-05-01', label: '洛阳', icon: '📍' },
-    { date: '2026-10-01', label: '广州', icon: '📍' },
-  ],
-  photos: [
-    { url: '/images/guangzhou-2025-05-01.jpg', caption: '广州 · 2025.05.01' },
-    { url: '/images/beijing-2025-07.jpg', caption: '北京 · 2025.07' },
-    { url: '/images/luoyang-2026-05-01-day.jpg', caption: '洛阳 · 2026.05.01' },
-    { url: '/images/luoyang-2026-05-01-night.jpg', caption: '洛阳 · 2026.05.01 · 夜色' },
-  ],
+  milestones: album.milestones,
+  photos: album.photos,
   memories: {
     title: '我们的回忆',
     hint: '把一起走过的日子，留在照片里',
     viewAllLabel: '查看全部照片',
+    featuredUrls: album.featuredUrls,
   },
   sectionOrder: ['todaySummary', 'memories', 'timers', 'timeline', 'anniversary'],
   timers: [
@@ -111,9 +98,9 @@ const PERSONAL_CONFIG: Partial<Config> = {
   statsMode: 'manual',
   statsShowVisitCount: false,
   stats: [
-    { label: '走过的城市', value: 5, icon: '🏙️' },
-    { label: '城市足迹', value: 7, icon: '📍' },
-    { label: '时光节点', value: 9, icon: '🗓️' },
+    { label: '走过的城市', value: 8, icon: '🏙️' },
+    { label: '城市足迹', value: 9, icon: '📍' },
+    { label: '时光节点', value: 11, icon: '🗓️' },
   ],
   wishes: [],
   sections: { wishes: false, stats: false, memories: true },
@@ -121,7 +108,7 @@ const PERSONAL_CONFIG: Partial<Config> = {
     ...DEFAULT_CONFIG.music,
     enabled: true,
     autoPlay: true,
-    startOnInteraction: true,
+    startOnInteraction: false,
     playMode: 'single',
     allowModeSwitch: false,
     volume: 0.5,

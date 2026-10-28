@@ -1,0 +1,473 @@
+{
+  "milestones": [
+    {
+      "date": "2024-08-08",
+      "label": "初见 · 萍乡",
+      "icon": "🌷"
+    },
+    {
+      "date": "2024-09-14",
+      "label": "北京",
+      "icon": "📍"
+    },
+    {
+      "date": "2025-01-01",
+      "label": "相恋",
+      "icon": "💕"
+    },
+    {
+      "date": "2025-01-13",
+      "label": "广州",
+      "icon": "📍"
+    },
+    {
+      "date": "2025-02-04",
+      "label": "萍乡",
+      "icon": "📍"
+    },
+    {
+      "date": "2025-05-01",
+      "label": "广州",
+      "icon": "📍"
+    },
+    {
+      "date": "2025-07-24",
+      "label": "北京-秦皇岛-天津",
+      "icon": "📍"
+    },
+    {
+      "date": "2025-10-01",
+      "label": "武汉",
+      "icon": "📍"
+    },
+    {
+      "date": "2026-02-20",
+      "label": "长沙",
+      "icon": "📍"
+    },
+    {
+      "date": "2026-05-01",
+      "label": "洛阳",
+      "icon": "📍"
+    },
+    {
+      "date": "2026-10-01",
+      "label": "广州",
+      "icon": "📍"
+    }
+  ],
+  "photos": [
+    {
+      "url": "/images/album/2024-08-08-01.webp",
+      "thumbnail": "/images/album/2024-08-08-01-thumb.webp",
+      "caption": "萍乡 · 2024.08.08",
+      "date": "2024-08-08",
+      "album": "萍乡"
+    },
+    {
+      "url": "/images/album/2024-08-08-02.webp",
+      "thumbnail": "/images/album/2024-08-08-02-thumb.webp",
+      "caption": "萍乡 · 2024.08.08",
+      "date": "2024-08-08",
+      "album": "萍乡"
+    },
+    {
+      "url": "/images/album/2024-08-08-03.webp",
+      "thumbnail": "/images/album/2024-08-08-03-thumb.webp",
+      "caption": "萍乡 · 2024.08.08",
+      "date": "2024-08-08",
+      "album": "萍乡"
+    },
+    {
+      "url": "/images/album/2024-09-14-01.webp",
+      "thumbnail": "/images/album/2024-09-14-01-thumb.webp",
+      "caption": "北京 · 2024.09.14",
+      "date": "2024-09-14",
+      "album": "北京"
+    },
+    {
+      "url": "/images/album/2024-09-14-02.webp",
+      "thumbnail": "/images/album/2024-09-14-02-thumb.webp",
+      "caption": "北京 · 2024.09.14",
+      "date": "2024-09-14",
+      "album": "北京"
+    },
+    {
+      "url": "/images/album/2024-09-14-03.webp",
+      "thumbnail": "/images/album/2024-09-14-03-thumb.webp",
+      "caption": "北京 · 2024.09.14",
+      "date": "2024-09-14",
+      "album": "北京"
+    },
+    {
+      "url": "/images/album/2024-09-14-04.webp",
+      "thumbnail": "/images/album/2024-09-14-04-thumb.webp",
+      "caption": "北京 · 2024.09.14",
+      "date": "2024-09-14",
+      "album": "北京"
+    },
+    {
+      "url": "/images/album/2025-01-01-01.webp",
+      "thumbnail": "/images/album/2025-01-01-01-thumb.webp",
+      "caption": "相恋 · 2025.01.01",
+      "date": "2025-01-01",
+      "album": "相恋"
+    },
+    {
+      "url": "/images/album/2025-01-01-02.webp",
+      "thumbnail": "/images/album/2025-01-01-02-thumb.webp",
+      "caption": "相恋 · 2025.01.01",
+      "date": "2025-01-01",
+      "album": "相恋"
+    },
+    {
+      "url": "/images/album/2025-01-13-01.webp",
+      "thumbnail": "/images/album/2025-01-13-01-thumb.webp",
+      "caption": "广州 · 2025.01.13",
+      "date": "2025-01-13",
+      "album": "广州"
+    },
+    {
+      "url": "/images/album/2025-01-13-02.webp",
+      "thumbnail": "/images/album/2025-01-13-02-thumb.webp",
+      "caption": "广州 · 2025.01.13",
+      "date": "2025-01-13",
+      "album": "广州"
+    },
+    {
+      "url": "/images/album/2025-01-13-03.webp",
+      "thumbnail": "/images/album/2025-01-13-03-thumb.webp",
+      "caption": "广州 · 2025.01.13",
+      "date": "2025-01-13",
+      "album": "广州"
+    },
+    {
+      "url": "/images/album/2025-01-13-04.webp",
+      "thumbnail": "/images/album/2025-01-13-04-thumb.webp",
+      "caption": "广州 · 2025.01.13",
+      "date": "2025-01-13",
+      "album": "广州"
+    },
+    {
+      "url": "/images/album/2025-01-13-05.webp",
+      "thumbnail": "/images/album/2025-01-13-05-thumb.webp",
+      "caption": "广州 · 2025.01.13",
+      "date": "2025-01-13",
+      "album": "广州"
+    },
+    {
+      "url": "/images/album/2025-01-13-06.webp",
+      "thumbnail": "/images/album/2025-01-13-06-thumb.webp",
+      "caption": "广州 · 2025.01.13",
+      "date": "2025-01-13",
+      "album": "广州"
+    },
+    {
+      "url": "/images/album/2025-01-13-07.webp",
+      "thumbnail": "/images/album/2025-01-13-07-thumb.webp",
+      "caption": "广州 · 2025.01.13",
+      "date": "2025-01-13",
+      "album": "广州"
+    },
+    {
+      "url": "/images/album/2025-01-13-08.webp",
+      "thumbnail": "/images/album/2025-01-13-08-thumb.webp",
+      "caption": "广州 · 2025.01.13",
+      "date": "2025-01-13",
+      "album": "广州"
+    },
+    {
+      "url": "/images/album/2025-01-13-09.webp",
+      "thumbnail": "/images/album/2025-01-13-09-thumb.webp",
+      "caption": "广州 · 2025.01.13",
+      "date": "2025-01-13",
+      "album": "广州"
+    },
+    {
+      "url": "/images/album/2025-02-04-01.webp",
+      "thumbnail": "/images/album/2025-02-04-01-thumb.webp",
+      "caption": "萍乡 · 2025.02.04",
+      "date": "2025-02-04",
+      "album": "萍乡"
+    },
+    {
+      "url": "/images/album/2025-02-04-02.webp",
+      "thumbnail": "/images/album/2025-02-04-02-thumb.webp",
+      "caption": "萍乡 · 2025.02.04",
+      "date": "2025-02-04",
+      "album": "萍乡"
+    },
+    {
+      "url": "/images/album/2025-05-01-01.webp",
+      "thumbnail": "/images/album/2025-05-01-01-thumb.webp",
+      "caption": "广州 · 2025.05.01",
+      "date": "2025-05-01",
+      "album": "广州"
+    },
+    {
+      "url": "/images/album/2025-05-01-02.webp",
+      "thumbnail": "/images/album/2025-05-01-02-thumb.webp",
+      "caption": "广州 · 2025.05.01",
+      "date": "2025-05-01",
+      "album": "广州"
+    },
+    {
+      "url": "/images/album/2025-05-01-03.webp",
+      "thumbnail": "/images/album/2025-05-01-03-thumb.webp",
+      "caption": "广州 · 2025.05.01",
+      "date": "2025-05-01",
+      "album": "广州"
+    },
+    {
+      "url": "/images/album/2025-05-01-04.webp",
+      "thumbnail": "/images/album/2025-05-01-04-thumb.webp",
+      "caption": "广州 · 2025.05.01",
+      "date": "2025-05-01",
+      "album": "广州"
+    },
+    {
+      "url": "/images/album/2025-05-01-05.webp",
+      "thumbnail": "/images/album/2025-05-01-05-thumb.webp",
+      "caption": "广州 · 2025.05.01",
+      "date": "2025-05-01",
+      "album": "广州"
+    },
+    {
+      "url": "/images/album/2025-05-01-06.webp",
+      "thumbnail": "/images/album/2025-05-01-06-thumb.webp",
+      "caption": "广州 · 2025.05.01",
+      "date": "2025-05-01",
+      "album": "广州"
+    },
+    {
+      "url": "/images/album/2025-07-24-01.webp",
+      "thumbnail": "/images/album/2025-07-24-01-thumb.webp",
+      "caption": "北京-秦皇岛-天津 · 2025.07.24",
+      "date": "2025-07-24",
+      "album": "北京-秦皇岛-天津"
+    },
+    {
+      "url": "/images/album/2025-07-24-02.webp",
+      "thumbnail": "/images/album/2025-07-24-02-thumb.webp",
+      "caption": "北京-秦皇岛-天津 · 2025.07.24",
+      "date": "2025-07-24",
+      "album": "北京-秦皇岛-天津"
+    },
+    {
+      "url": "/images/album/2025-07-24-03.webp",
+      "thumbnail": "/images/album/2025-07-24-03-thumb.webp",
+      "caption": "北京-秦皇岛-天津 · 2025.07.24",
+      "date": "2025-07-24",
+      "album": "北京-秦皇岛-天津"
+    },
+    {
+      "url": "/images/album/2025-07-24-04.webp",
+      "thumbnail": "/images/album/2025-07-24-04-thumb.webp",
+      "caption": "北京-秦皇岛-天津 · 2025.07.24",
+      "date": "2025-07-24",
+      "album": "北京-秦皇岛-天津"
+    },
+    {
+      "url": "/images/album/2025-07-24-05.webp",
+      "thumbnail": "/images/album/2025-07-24-05-thumb.webp",
+      "caption": "北京-秦皇岛-天津 · 2025.07.24",
+      "date": "2025-07-24",
+      "album": "北京-秦皇岛-天津"
+    },
+    {
+      "url": "/images/album/2025-07-24-06.webp",
+      "thumbnail": "/images/album/2025-07-24-06-thumb.webp",
+      "caption": "北京-秦皇岛-天津 · 2025.07.24",
+      "date": "2025-07-24",
+      "album": "北京-秦皇岛-天津"
+    },
+    {
+      "url": "/images/album/2025-07-24-07.webp",
+      "thumbnail": "/images/album/2025-07-24-07-thumb.webp",
+      "caption": "北京-秦皇岛-天津 · 2025.07.24",
+      "date": "2025-07-24",
+      "album": "北京-秦皇岛-天津"
+    },
+    {
+      "url": "/images/album/2025-07-24-08.webp",
+      "thumbnail": "/images/album/2025-07-24-08-thumb.webp",
+      "caption": "北京-秦皇岛-天津 · 2025.07.24",
+      "date": "2025-07-24",
+      "album": "北京-秦皇岛-天津"
+    },
+    {
+      "url": "/images/album/2025-10-01-01.webp",
+      "thumbnail": "/images/album/2025-10-01-01-thumb.webp",
+      "caption": "武汉 · 2025.10.01",
+      "date": "2025-10-01",
+      "album": "武汉"
+    },
+    {
+      "url": "/images/album/2025-10-01-02.webp",
+      "thumbnail": "/images/album/2025-10-01-02-thumb.webp",
+      "caption": "武汉 · 2025.10.01",
+      "date": "2025-10-01",
+      "album": "武汉"
+    },
+    {
+      "url": "/images/album/2025-10-01-03.webp",
+      "thumbnail": "/images/album/2025-10-01-03-thumb.webp",
+      "caption": "武汉 · 2025.10.01",
+      "date": "2025-10-01",
+      "album": "武汉"
+    },
+    {
+      "url": "/images/album/2025-10-01-04.webp",
+      "thumbnail": "/images/album/2025-10-01-04-thumb.webp",
+      "caption": "武汉 · 2025.10.01",
+      "date": "2025-10-01",
+      "album": "武汉"
+    },
+    {
+      "url": "/images/album/2026-02-20-01.webp",
+      "thumbnail": "/images/album/2026-02-20-01-thumb.webp",
+      "caption": "长沙 · 2026.02.20",
+      "date": "2026-02-20",
+      "album": "长沙"
+    },
+    {
+      "url": "/images/album/2026-02-20-02.webp",
+      "thumbnail": "/images/album/2026-02-20-02-thumb.webp",
+      "caption": "长沙 · 2026.02.20",
+      "date": "2026-02-20",
+      "album": "长沙"
+    },
+    {
+      "url": "/images/album/2026-02-20-03.webp",
+      "thumbnail": "/images/album/2026-02-20-03-thumb.webp",
+      "caption": "长沙 · 2026.02.20",
+      "date": "2026-02-20",
+      "album": "长沙"
+    },
+    {
+      "url": "/images/album/2026-05-01-01.webp",
+      "thumbnail": "/images/album/2026-05-01-01-thumb.webp",
+      "caption": "洛阳 · 2026.05.01",
+      "date": "2026-05-01",
+      "album": "洛阳"
+    },
+    {
+      "url": "/images/album/2026-05-01-02.webp",
+      "thumbnail": "/images/album/2026-05-01-02-thumb.webp",
+      "caption": "洛阳 · 2026.05.01",
+      "date": "2026-05-01",
+      "album": "洛阳"
+    },
+    {
+      "url": "/images/album/2026-05-01-03.webp",
+      "thumbnail": "/images/album/2026-05-01-03-thumb.webp",
+      "caption": "洛阳 · 2026.05.01",
+      "date": "2026-05-01",
+      "album": "洛阳"
+    },
+    {
+      "url": "/images/album/2026-05-01-04.webp",
+      "thumbnail": "/images/album/2026-05-01-04-thumb.webp",
+      "caption": "洛阳 · 2026.05.01",
+      "date": "2026-05-01",
+      "album": "洛阳"
+    },
+    {
+      "url": "/images/album/2026-05-01-05.webp",
+      "thumbnail": "/images/album/2026-05-01-05-thumb.webp",
+      "caption": "洛阳 · 2026.05.01",
+      "date": "2026-05-01",
+      "album": "洛阳"
+    },
+    {
+      "url": "/images/album/2026-05-01-06.webp",
+      "thumbnail": "/images/album/2026-05-01-06-thumb.webp",
+      "caption": "洛阳 · 2026.05.01",
+      "date": "2026-05-01",
+      "album": "洛阳"
+    },
+    {
+      "url": "/images/album/2026-05-01-07.webp",
+      "thumbnail": "/images/album/2026-05-01-07-thumb.webp",
+      "caption": "洛阳 · 2026.05.01",
+      "date": "2026-05-01",
+      "album": "洛阳"
+    },
+    {
+      "url": "/images/album/2026-05-01-08.webp",
+      "thumbnail": "/images/album/2026-05-01-08-thumb.webp",
+      "caption": "洛阳 · 2026.05.01",
+      "date": "2026-05-01",
+      "album": "洛阳"
+    },
+    {
+      "url": "/images/album/2026-05-01-09.webp",
+      "thumbnail": "/images/album/2026-05-01-09-thumb.webp",
+      "caption": "洛阳 · 2026.05.01",
+      "date": "2026-05-01",
+      "album": "洛阳"
+    },
+    {
+      "url": "/images/album/2026-05-01-10.webp",
+      "thumbnail": "/images/album/2026-05-01-10-thumb.webp",
+      "caption": "洛阳 · 2026.05.01",
+      "date": "2026-05-01",
+      "album": "洛阳"
+    },
+    {
+      "url": "/images/album/2026-05-01-11.webp",
+      "thumbnail": "/images/album/2026-05-01-11-thumb.webp",
+      "caption": "洛阳 · 2026.05.01",
+      "date": "2026-05-01",
+      "album": "洛阳"
+    },
+    {
+      "url": "/images/album/2026-05-01-12.webp",
+      "thumbnail": "/images/album/2026-05-01-12-thumb.webp",
+      "caption": "洛阳 · 2026.05.01",
+      "date": "2026-05-01",
+      "album": "洛阳"
+    },
+    {
+      "url": "/images/album/2026-05-01-13.webp",
+      "thumbnail": "/images/album/2026-05-01-13-thumb.webp",
+      "caption": "洛阳 · 2026.05.01",
+      "date": "2026-05-01",
+      "album": "洛阳"
+    },
+    {
+      "url": "/images/album/2026-10-01-01.webp",
+      "thumbnail": "/images/album/2026-10-01-01-thumb.webp",
+      "caption": "广州 · 2026.10.01",
+      "date": "2026-10-01",
+      "album": "广州"
+    },
+    {
+      "url": "/images/album/2026-10-01-02.webp",
+      "thumbnail": "/images/album/2026-10-01-02-thumb.webp",
+      "caption": "广州 · 2026.10.01",
+      "date": "2026-10-01",
+      "album": "广州"
+    },
+    {
+      "url": "/images/album/2026-10-01-03.webp",
+      "thumbnail": "/images/album/2026-10-01-03-thumb.webp",
+      "caption": "广州 · 2026.10.01",
+      "date": "2026-10-01",
+      "album": "广州"
+    },
+    {
+      "url": "/images/album/2026-10-01-04.webp",
+      "thumbnail": "/images/album/2026-10-01-04-thumb.webp",
+      "caption": "广州 · 2026.10.01",
+      "date": "2026-10-01",
+      "album": "广州"
+    }
+  ],
+  "featuredUrls": [
+    "/images/album/2025-05-01-06.webp",
+    "/images/album/2025-07-24-07.webp",
+    "/images/album/2026-05-01-03.webp",
+    "/images/album/2026-10-01-01.webp"
+  ]
+}

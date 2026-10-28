@@ -44,4 +44,9 @@ for (const icon of manifest.icons) checkLocalUrl(icon.src);
 const sitemap = readFileSync('dist/sitemap-0.xml', 'utf8');
 assert.ok(sitemap.includes(`${expectedSite}en-us/`));
 assert.ok(!sitemap.includes('/LovePage/LovePage/'));
+const album = JSON.parse(readFileSync('src/config/album.json', 'utf8'));
+for (const photo of album.photos) {
+  checkLocalUrl(`${base.slice(0, -1)}${photo.url}`);
+  if (photo.thumbnail) checkLocalUrl(`${base.slice(0, -1)}${photo.thumbnail}`);
+}
 console.log('Validated 3 pages, local resources, canonical/alternate URLs, manifest and sitemap.');

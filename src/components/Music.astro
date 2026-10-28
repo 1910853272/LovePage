@@ -21,6 +21,8 @@ const musicStateStorageKey = STORAGE_KEYS.musicState;
 const pageUnlockedEvent = APP_EVENTS.pageUnlocked;
 
 const ui = {
+  playMusic: messages?.actions?.playMusic || '播放音乐',
+  pauseMusic: messages?.actions?.pauseMusic || '暂停音乐',
   noMusic: messages?.music?.noMusic || '暂无音乐',
   noMusicFile: messages?.music?.noMusicFile || '暂无音乐文件',
   playPause: messages?.music?.playPause || '播放/暂停',
@@ -42,7 +44,7 @@ const modeLabel = ui.modes;
 
 {showMusic && (
   <>
-    <div class="music-panel glass" id="musicPanel">
+    <div class="music-panel glass" id="musicPanel" hidden style="display: none !important">
       <div class="flex items-center gap-3">
         <button
           class="music-nav-btn"
@@ -486,6 +488,10 @@ const modeLabel = ui.modes;
 
       function syncPlayingUI(isPlaying) {
         playing = isPlaying;
+        const label = isPlaying ? ui.pauseMusic : ui.playMusic;
+        btn.setAttribute('aria-label', label);
+        btn.setAttribute('title', label);
+        btn.setAttribute('aria-pressed', String(isPlaying));
         if (playIcon && pauseIcon) {
           playIcon.classList.toggle('hidden', isPlaying);
           pauseIcon.classList.toggle('hidden', !isPlaying);
@@ -598,9 +604,12 @@ const modeLabel = ui.modes;
       saveState();
 
       btn.addEventListener('click', () => {
-        open = !open;
-        panel.classList.toggle('show', open);
-        panel.classList.remove('shake-hint');
+        if (playing) {
+          audio.pause();
+          syncPlayingUI(false);
+        } else {
+          audio.play().then(() => syncPlayingUI(true)).catch(() => syncPlayingUI(false));
+        }
       });
 
       pp.addEventListener('click', (e) => {
@@ -660,7 +669,7 @@ const modeLabel = ui.modes;
       window.addEventListener('resize', updateMarqueeState);
 
       const unlockOnGesture = (event) => {
-        if (!event.isTrusted || event.target?.closest?.('#musicPanel')) return;
+        if (!event.isTrusted || event.target?.closest?.('#musicPanel, #musicBtn')) return;
         if (passwordGuardEnabled && store?.getLocal(unlockedStorageKey) !== expectedPassword) return;
         if (pendingAutoplay) {
           tryAutoplay();

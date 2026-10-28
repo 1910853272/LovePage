@@ -15,7 +15,6 @@ import Share from '../components/Share.astro';
 import FloatingActions from '../components/FloatingActions.astro';
 import Music from '../components/Music.astro';
 import PhotoWall from '../components/PhotoWall.astro';
-import Footer from '../components/Footer.astro';
 import GoogleAnalytics from '../components/GoogleAnalytics.astro';
 import AppScript from '../components/AppScript.astro';
 import { CONFIG, resolveSectionOrder } from '../config';
@@ -85,7 +84,6 @@ const sectionOrder = resolveSectionOrder(CONFIG);
           return null;
       }
     })}
-    <Footer config={CONFIG} messages={messages} />
   </main>
 
   {sections.photoWall !== false && <PhotoWall config={CONFIG} messages={messages} />}

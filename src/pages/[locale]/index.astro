@@ -15,7 +15,6 @@ import Share from '../../components/Share.astro';
 import FloatingActions from '../../components/FloatingActions.astro';
 import Music from '../../components/Music.astro';
 import PhotoWall from '../../components/PhotoWall.astro';
-import Footer from '../../components/Footer.astro';
 import GoogleAnalytics from '../../components/GoogleAnalytics.astro';
 import AppScript from '../../components/AppScript.astro';
 import { CONFIG } from '../../config';
@@ -74,7 +73,6 @@ const config = CONFIG;
       </section>
     )}
     {config.sections?.wishes !== false && config.wishes?.length && <WishList config={config} messages={messages} />}
-    <Footer config={config} messages={messages} />
   </main>
 
   {config.sections?.photoWall !== false && <PhotoWall config={config} messages={messages} />}

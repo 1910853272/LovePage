@@ -12,6 +12,12 @@ interface Props {
 const { config, messages } = Astro.props;
 const photos = (config.photos ?? []).map((photo) => ({ ...photo, url: withBase(photo.url, import.meta.env.BASE_URL) }));
 const showPhotoWall = photos.length > 0;
+const groups = new Map<string, Array<{ photo: (typeof photos)[number]; index: number }>>();
+photos.forEach((photo, index) => {
+  const label = photo.date ? `${photo.date.replaceAll('-', '.')} · ${photo.album ?? ''}` : '';
+  if (!groups.has(label)) groups.set(label, []);
+  groups.get(label)!.push({ photo, index });
+});
 const defaultPhotoWallLabels = DEFAULT_MESSAGES.photoWall;
 const ui = {
   title: messages?.photoWall?.title || defaultPhotoWallLabels.title,
@@ -30,12 +36,19 @@ const ui = {
           ×
         </button>
         <h3 class="photo-wall-title">📷 {ui.title}</h3>
-        <div class="photo-wall-grid" id="photoWallGrid">
-          {photos.map((p, i) => (
-            <div class="photo-wall-item reveal" style={`--i: ${i}`} data-url={p.url} data-caption={p.caption ?? ''} data-index={i} role="button" tabindex="0">
-              <img src={p.url} alt={p.caption ?? ''} loading="lazy" />
-              {p.caption && <span class="photo-wall-caption">{p.caption}</span>}
-            </div>
+        <div class="photo-albums" id="photoWallGrid">
+          {[...groups].map(([label, entries]) => (
+            <section class="photo-album">
+              {label && <h4 class="photo-album-title">{label}</h4>}
+              <div class="photo-wall-grid">
+                {entries.map(({ photo: p, index: i }) => (
+                  <div class="photo-wall-item reveal" data-url={p.url} data-caption={p.caption ?? ''} data-index={i} role="button" tabindex="0">
+                    <img src={withBase(p.thumbnail || p.url, import.meta.env.BASE_URL)} alt={p.caption ?? ''} loading="lazy" decoding="async" />
+                    {p.caption && <span class="photo-wall-caption">{p.caption}</span>}
+                  </div>
+                ))}
+              </div>
+            </section>
           ))}
         </div>
       </div>

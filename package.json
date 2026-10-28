@@ -21,7 +21,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "test": "node --experimental-strip-types --test tests/*.test.ts",
-    "check:dist": "node scripts/check-dist.mjs"
+    "check:dist": "node scripts/check-dist.mjs",
+    "import:photos": "node scripts/import-photos.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.0",

@@ -9,6 +9,9 @@ export interface Milestone {
 
 export interface Photo {
   url: string;
+  thumbnail?: string;
+  date?: string;
+  album?: string;
   caption?: string;
 }
 
@@ -99,7 +102,7 @@ export interface PasswordConfig {
 }
 
 export interface Config {
-  memories?: { title: string; hint: string; viewAllLabel: string };
+  memories?: { title: string; hint: string; viewAllLabel: string; featuredUrls?: string[] };
   demoMode?: boolean;
   demoNotice?: string;
   repositoryUrl?: string;
