@@ -58,10 +58,9 @@ function protectPassword(password: string): string {
 const ENV_CONFIG_PATCH = parseEnvConfigPatch(import.meta.env.VITE_LOVE_CONFIG_JSON);
 
 // 专属内容统一在这里替换；环境变量仍可覆盖以下设置。
-// 姓名与日期由本人提供；月份记录保留原始精度，照片暂用明确标记的占位插画。
+// 姓名、日期与照片由本人提供；月份记录保留原始精度。
 const PERSONAL_CONFIG: Partial<Config> = {
-  demoMode: true,
-  demoNotice: '我们的故事 · 照片待补充',
+  demoMode: false,
   repositoryUrl: 'https://github.com/1910853272/LovePage',
   boy: '李增圣',
   girl: '曾莎薇',
@@ -88,10 +87,17 @@ const PERSONAL_CONFIG: Partial<Config> = {
     { date: '2026-10-01', label: '广州', icon: '📍' },
   ],
   photos: [
-    { url: '/images/memory-01.svg', caption: '初见 · 待放入你们的照片' },
-    { url: '/images/memory-02.svg', caption: '相伴 · 待放入你们的照片' },
-    { url: '/images/memory-03.svg', caption: '远行 · 待放入你们的照片' },
+    { url: '/images/guangzhou-2025-05-01.jpg', caption: '广州 · 2025.05.01' },
+    { url: '/images/beijing-2025-07.jpg', caption: '北京 · 2025.07' },
+    { url: '/images/luoyang-2026-05-01-day.jpg', caption: '洛阳 · 2026.05.01' },
+    { url: '/images/luoyang-2026-05-01-night.jpg', caption: '洛阳 · 2026.05.01 · 夜色' },
   ],
+  memories: {
+    title: '我们的回忆',
+    hint: '把一起走过的日子，留在照片里',
+    viewAllLabel: '查看全部照片',
+  },
+  sectionOrder: ['todaySummary', 'memories', 'timers', 'timeline', 'anniversary'],
   timers: [
     { date: '2024-08-08', label: '从初见到现在', icon: '🌷' },
     { date: '2025-01-01', label: '相恋时光', icon: '💕' },
@@ -109,7 +115,7 @@ const PERSONAL_CONFIG: Partial<Config> = {
     { label: '时光节点', value: 9, icon: '🗓️' },
   ],
   wishes: [],
-  sections: { wishes: false },
+  sections: { wishes: false, stats: false, memories: true },
   music: { ...DEFAULT_CONFIG.music, enabled: false, autoPlay: false, tracks: [] },
   passwordConfig: { ...DEFAULT_CONFIG.passwordConfig!, enabled: false, password: '' },
   privacy: { privateMode: true, noIndex: true },

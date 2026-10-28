@@ -6,7 +6,9 @@
 
 修改 `src/config.ts` 中的 `PERSONAL_CONFIG`，保留通用默认值与环境覆盖机制。优先级为：通用默认配置 → 专属配置 → `VITE_LOVE_CONFIG_JSON`。数组整组替换；可继续使用 GitHub Actions 的可选 `LOVE_CONFIG_JSON` Secret。
 
-当前姓名、初见与相恋日期、城市足迹已替换为本人提供的信息，照片仍为占位插画；未婚，不展示婚姻时长。仅提供月份的足迹保留 `YYYY-MM`，不补造具体日期。`demoMode` 当前用于显示“照片待补充”提示；实际照片替换完毕后可改为 `false`。后续愿望与故事等仅在收到本人内容后添加。
+当前姓名、初见与相恋日期、城市足迹和 4 张照片均为本人提供的信息；未婚，不展示婚姻时长。仅提供月份的足迹保留 `YYYY-MM`，不补造具体日期。`demoMode` 已关闭。后续愿望与故事等仅在收到本人内容后添加。
+
+“我们的回忆”替换了首页数字区，复用 `photos` 的前 4 张照片；完整照片墙展示整个 `photos` 数组，点击照片可放大并切换。`memories` 配置标题、提示和查看全部按钮文案，`sections.memories` 控制显隐，`sectionOrder` 中用 `memories` 控制位置。当前手机布局为横向滑动卡片，桌面布局为四列。照片墙需保持开启以提供共享大图预览。
 
 照片放在 `public/images/`，配置中使用 `/images/文件名.jpg`，并添加照片说明。程序会自动补齐 `/LovePage/`。推荐使用压缩后的 JPG/WebP；占位插画可在正式替换后移除。分享封面为 `public/images/share-cover.png`（1200×630），主屏幕图标为 `public/images/icon-512.png`（512×512）。
 

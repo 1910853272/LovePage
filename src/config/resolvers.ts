@@ -191,6 +191,7 @@ export function resolveIosStartupImages(
 export const DEFAULT_SECTION_ORDER: SectionKey[] = [
   'todaySummary',
   'stats',
+  'memories',
   'timers',
   'timeline',
   'anniversary',

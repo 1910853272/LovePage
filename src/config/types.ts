@@ -58,7 +58,7 @@ export interface MusicTrack {
 }
 
 export type StatsMode = 'auto' | 'manual' | 'hybrid';
-export type SectionKey = 'todaySummary' | 'stats' | 'timers' | 'timeline' | 'anniversary' | 'wishes';
+export type SectionKey = 'todaySummary' | 'stats' | 'memories' | 'timers' | 'timeline' | 'anniversary' | 'wishes';
 export type MusicPlayMode = 'single' | 'sequence' | 'shuffle';
 export type MusicStartPolicy = 'first' | 'last' | 'random';
 
@@ -97,6 +97,7 @@ export interface PasswordConfig {
 }
 
 export interface Config {
+  memories?: { title: string; hint: string; viewAllLabel: string };
   demoMode?: boolean;
   demoNotice?: string;
   repositoryUrl?: string;
@@ -134,6 +135,7 @@ export interface Config {
   /** 主内容区块的显示顺序；未列出的区块按默认顺序追加，显隐仍由 sections 控制 */
   sectionOrder?: SectionKey[];
   sections?: {
+    memories?: boolean;
     todaySummary?: boolean;
     stats?: boolean;
     timeline?: boolean;

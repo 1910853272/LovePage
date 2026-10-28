@@ -1,0 +1,43 @@
+---
+import type { Config } from '../config';
+import { withBase } from '../urls';
+
+interface Props { config: Config }
+const { config } = Astro.props;
+const featured = (config.photos ?? []).slice(0, 4);
+const copy = config.memories;
+---
+
+{copy && featured.length > 0 && (
+  <section class="memories-section reveal" aria-labelledby="memoriesHeading" id="memoriesSection">
+    <h2 class="section-title" id="memoriesHeading">{copy.title}</h2>
+    <p class="memories-hint">{copy.hint}</p>
+    <div class="memories-track">
+      {featured.map((photo, index) => (
+        <button class="memory-card glass" type="button" data-memory-index={index} aria-label={photo.caption}>
+          <img src={withBase(photo.url, import.meta.env.BASE_URL)} alt={photo.caption ?? ''} loading="lazy" decoding="async" />
+          <span class="memory-caption">{photo.caption}</span>
+        </button>
+      ))}
+    </div>
+    {config.sections?.photoWall !== false && <button class="memories-all" type="button" data-open-photo-wall>{copy.viewAllLabel} <span aria-hidden="true">↗</span></button>}
+  </section>
+)}
+
+<style>
+  .memories-section { width: 100%; max-width: 768px; min-width: 0; text-align: center; }
+  .memories-hint { margin: -0.25rem 0 1.25rem; color: var(--pink-light); opacity: 0.75; font-size: 0.8rem; letter-spacing: 0.08em; }
+  .memories-track { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+  .memory-card { display: flex; flex-direction: column; min-width: 0; padding: 7px; border-radius: 16px; text-align: left; cursor: pointer; transition: transform 0.2s; }
+  .memory-card:hover { transform: translateY(-4px); }
+  .memory-card:focus-visible, .memories-all:focus-visible { outline: 2px solid var(--pink); outline-offset: 4px; }
+  .memory-card img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; object-position: center; border-radius: 11px; }
+  .memory-caption { padding: 12px 4px 8px; font-size: 0.75rem; color: var(--pink-light); line-height: 1.6; }
+  .memories-all { margin-top: 18px; padding: 8px 12px; border: 0; background: transparent; color: var(--pink); font-size: 0.8rem; cursor: pointer; }
+  @media (max-width: 640px) {
+    .memories-track { display: flex; overflow-x: auto; gap: 14px; scroll-snap-type: x mandatory; padding: 6px 2px 12px; }
+    .memory-card { flex: 0 0 72%; scroll-snap-align: start; }
+    .memories-track::-webkit-scrollbar { height: 3px; }
+    .memories-track::-webkit-scrollbar-thumb { background: var(--pink-glow); border-radius: 4px; }
+  }
+</style>

@@ -6,6 +6,7 @@ import FloatingHearts from '../components/FloatingHearts.astro';
 import Hero from '../components/Hero.astro';
 import TodaySummary from '../components/TodaySummary.astro';
 import Stats from '../components/Stats.astro';
+import Memories from '../components/Memories.astro';
 import Timeline from '../components/Timeline.astro';
 import Timers from '../components/Timers.astro';
 import WishList from '../components/WishList.astro';
@@ -53,6 +54,8 @@ const sectionOrder = resolveSectionOrder(CONFIG);
           return <TodaySummary config={CONFIG} messages={messages} />;
         case 'stats':
           return <Stats config={CONFIG} messages={messages} />;
+        case 'memories':
+          return <Memories config={CONFIG} />;
         case 'timers':
           return (
             <section class="w-full max-w-xl sm:max-w-2xl lg:max-w-3xl flex flex-col items-center">

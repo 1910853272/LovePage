@@ -54,11 +54,14 @@ const ui = {
 
         entry.style.display = 'flex';
 
-        entry.addEventListener('click', () => {
+        function openWall() {
           overlay.removeAttribute('inert');
           overlay.classList.add('show');
           overlay.setAttribute('aria-hidden', 'false');
-        });
+          closeBtn?.focus();
+        }
+        entry.addEventListener('click', openWall);
+        document.querySelectorAll('[data-open-photo-wall]').forEach((button) => button.addEventListener('click', openWall));
 
         const close = () => {
           overlay.classList.remove('show');
@@ -75,7 +78,8 @@ const ui = {
         });
 
         // Lightbox
-        function openLightbox(index) {
+        function openLightbox(index, trigger = document.activeElement) {
+          if (document.querySelector('.photo-lightbox')) return;
           const items = photos || [];
           if (!items.length) return;
           let idx = ((index % items.length) + items.length) % items.length;
@@ -84,6 +88,7 @@ const ui = {
           const lb = document.createElement('div');
           lb.className = 'photo-lightbox';
           lb.setAttribute('role', 'dialog');
+          lb.setAttribute('aria-modal', 'true');
           lb.setAttribute('aria-label', ui.preview);
           lb.innerHTML =
             `<button class="photo-lightbox-close" aria-label="${ui.close}">×</button>` +
@@ -109,6 +114,7 @@ const ui = {
             lb.classList.remove('show');
             document.removeEventListener('keydown', keyHandler);
             setTimeout(() => lb.remove(), 300);
+            if (trigger instanceof HTMLElement && !trigger.closest('[inert]')) trigger.focus();
           }
 
           function keyHandler(e) {
@@ -131,7 +137,10 @@ const ui = {
           document.addEventListener('keydown', keyHandler);
           document.body.appendChild(lb);
           show();
-          requestAnimationFrame(() => lb.classList.add('show'));
+          requestAnimationFrame(() => {
+            lb.classList.add('show');
+            lb.querySelector('.photo-lightbox-close').focus();
+          });
 
           let touchStartX = 0;
           lb.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; }, { passive: true });
@@ -150,6 +159,16 @@ const ui = {
           if (!item) return;
           const i = parseInt(item.dataset.index || '0', 10);
           openLightbox(i);
+        });
+        grid.addEventListener('keydown', (e) => {
+          const item = e.target.closest('.photo-wall-item');
+          if (item && (e.key === 'Enter' || e.key === ' ')) {
+            e.preventDefault();
+            openLightbox(Number(item.dataset.index));
+          }
+        });
+        document.querySelectorAll('[data-memory-index]').forEach((button) => {
+          button.addEventListener('click', () => openLightbox(Number(button.dataset.memoryIndex), button));
         });
       });
   </script>
