@@ -106,6 +106,7 @@ const PERSONAL_CONFIG: Partial<Config> = {
     { text: '一起去上海迪士尼', done: false },
     { text: '一起去维多利亚港', done: false },
     { text: '教Mrs Zeng学自行车', done: false },
+    { text: '一起去洛阳做汉服', done: true },
   ],
   sections: { wishes: true, stats: false, memories: true },
   music: {
