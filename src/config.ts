@@ -85,7 +85,7 @@ const PERSONAL_CONFIG: Partial<Config> = {
     viewAllLabel: '查看全部照片',
     featuredUrls: album.featuredUrls,
   },
-  sectionOrder: ['todaySummary', 'memories', 'timers', 'timeline', 'anniversary'],
+  sectionOrder: ['todaySummary', 'memories', 'timers', 'timeline', 'anniversary', 'wishes'],
   timers: [
     { date: '2024-08-08', label: '从初见到现在', icon: '🌷' },
     { date: '2025-01-01', label: '相恋时光', icon: '💕' },
@@ -102,8 +102,8 @@ const PERSONAL_CONFIG: Partial<Config> = {
     { label: '城市足迹', value: 9, icon: '📍' },
     { label: '时光节点', value: 11, icon: '🗓️' },
   ],
-  wishes: [],
-  sections: { wishes: false, stats: false, memories: true },
+  wishes: DEFAULT_CONFIG.wishes!.map((wish) => ({ ...wish, done: false })),
+  sections: { wishes: true, stats: false, memories: true },
   music: {
     ...DEFAULT_CONFIG.music,
     enabled: true,
