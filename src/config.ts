@@ -102,7 +102,11 @@ const PERSONAL_CONFIG: Partial<Config> = {
     { label: '城市足迹', value: 9, icon: '📍' },
     { label: '时光节点', value: 11, icon: '🗓️' },
   ],
-  wishes: DEFAULT_CONFIG.wishes!.map((wish) => ({ ...wish, done: false })),
+  wishes: [
+    { text: '一起去上海迪士尼', done: false },
+    { text: '一起去维多利亚港', done: false },
+    { text: '教Mrs Zeng学自行车', done: false },
+  ],
   sections: { wishes: true, stats: false, memories: true },
   music: {
     ...DEFAULT_CONFIG.music,

@@ -57,13 +57,15 @@ const sectionTitle = messages?.sections.wishes || '愿望清单';
         } catch {}
       }
 
-      let state = loadState();
-      if (!state || !Array.isArray(state)) {
-        state = wishes.map((w) => ({ text: w.text, done: w.done || false }));
-      }
-      if (state.length !== wishes.length) {
-        state = wishes.map((w, i) => state[i] || { text: w.text, done: w.done || false });
-      }
+      const savedState = loadState() || [];
+      // Match the wish itself so replacing or reordering items cannot inherit another wish's checkmark.
+      const state = wishes.map((wish) => {
+        const saved = savedState.find((item) => item?.text === wish.text);
+        return {
+          text: wish.text,
+          done: typeof saved?.done === 'boolean' ? saved.done : wish.done || false,
+        };
+      });
 
       const items = container.querySelectorAll('.wish-item');
       items.forEach((el, i) => {
